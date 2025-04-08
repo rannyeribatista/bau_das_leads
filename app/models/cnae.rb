@@ -1,0 +1,2 @@
+class Cnae < ApplicationRecord
+end

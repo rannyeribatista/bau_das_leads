@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cnpj_basico: MyString
+  cnpj_ordem: MyString
+  cnpj_dv: MyString
+  identificador: 1
+  nome_fantasia: MyString
+  situacao_cadastral: MyString
+  data_situacao: 2025-04-08
+  motivo_situacao: MyString
+  tipo_logradouro: MyString
+  logradouro: MyString
+  numero: MyString
+  complemento: MyString
+  bairro: MyString
+  cep: MyString
+  uf: MyString
+  municipio: MyString
+
+two:
+  cnpj_basico: MyString
+  cnpj_ordem: MyString
+  cnpj_dv: MyString
+  identificador: 1
+  nome_fantasia: MyString
+  situacao_cadastral: MyString
+  data_situacao: 2025-04-08
+  motivo_situacao: MyString
+  tipo_logradouro: MyString
+  logradouro: MyString
+  numero: MyString
+  complemento: MyString
+  bairro: MyString
+  cep: MyString
+  uf: MyString
+  municipio: MyString

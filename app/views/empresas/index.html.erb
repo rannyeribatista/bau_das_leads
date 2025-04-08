@@ -1,0 +1,93 @@
+<!-- app/views/empresas/index.html.erb -->
+<div class="container mx-auto px-4 py-6">
+  <h1 class="text-2xl font-bold mb-4">Empresas</h1>
+
+  <%= form_with url: empresas_path, method: :get, local: true, class: "mb-6" do %>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <!-- Filter by CNPJ -->
+      <div class="flex-1">
+        <label for="cnpj" class="block text-sm font-medium text-gray-700">CNPJ</label>
+        <input type="text" name="cnpj" id="cnpj" value="<%= params[:cnpj] %>" placeholder="Buscar por CNPJ"
+               class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <!-- Filter by CNAE -->
+      <div class="flex-1">
+        <label for="cnae" class="block text-sm font-medium text-gray-700">CNAE</label>
+        <input type="text" name="cnae" id="cnae" value="<%= params[:cnae] %>" placeholder="Buscar por CNAE"
+               class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+      </div>
+
+      <!-- Filter by Contact -->
+      <div class="flex items-end">
+        <label class="inline-flex items-center">
+          <input type="checkbox" name="has_contact" value="1" <%= params[:has_contact] == "1" ? "checked" : "" %> class="mr-2">
+          <span class="text-sm">Com Contato</span>
+        </label>
+      </div>
+
+      <!-- New Filter: Exclude Interacted -->
+      <div class="flex items-end">
+        <label class="inline-flex items-center">
+          <input type="checkbox" name="exclude_interacted" value="1" <%= params[:exclude_interacted] == "1" ? "checked" : "" %> class="mr-2">
+          <span class="text-sm">Excluir Interagidos</span>
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex items-end">
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+          Filtrar
+        </button>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Tabela de resultados -->
+  <table class="min-w-full divide-y divide-gray-200 border mt-4">
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">CNPJ</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">Razão Social</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">Natureza Jurídica</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">Porte</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">Status</th>
+        <th class="px-6 py-3 text-left text-xs font-medium text-gray-700">Ação</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @empresas.each do |empresa| %>
+        <%# Add a class or style to the row if empresa.interacted is true %>
+        <tr class="<%= 'bg-green-100' if empresa.interacted %>">
+          <td class="px-6 py-4 whitespace-nowrap"><%= empresa.cnpj_basico %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= empresa.razao_social %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= empresa.natureza_juridica %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= empresa.porte %></td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <% if empresa.interacted %>
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-200 text-green-800">
+                Interagido
+              </span>
+            <% else %>
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-800">
+                Pendente
+              </span>
+            <% end %>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <% unless empresa.interacted %>
+              <%= button_to 'Export to Airtable', export_empresa_path(empresa), method: :post, class: "px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+            <% else %>
+              <em>Already Exported</em>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Paginação -->
+  <div class="mt-6">
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+</div>

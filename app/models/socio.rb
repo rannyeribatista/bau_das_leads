@@ -1,0 +1,2 @@
+class Socio < ApplicationRecord
+end

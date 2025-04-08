@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cnpj_basico: MyString
+  razao_social: MyString
+  natureza_juridica: MyString
+  qualificacao_responsavel: MyString
+  capital_social: 9.99
+  porte: MyString
+  ente_federativo: MyString
+
+two:
+  cnpj_basico: MyString
+  razao_social: MyString
+  natureza_juridica: MyString
+  qualificacao_responsavel: MyString
+  capital_social: 9.99
+  porte: MyString
+  ente_federativo: MyString

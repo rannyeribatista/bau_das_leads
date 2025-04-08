@@ -1,0 +1,2 @@
+class Natureza < ApplicationRecord
+end

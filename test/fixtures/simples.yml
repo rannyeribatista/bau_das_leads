@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cnpj_basico: MyString
+  opcao_pelo_simples: MyString
+  data_opcao_simples: 2025-04-08
+  data_exclusao_simples: 2025-04-08
+  opcao_pelo_mei: MyString
+  data_opcao_mei: 2025-04-08
+  data_exclusao_mei: 2025-04-08
+
+two:
+  cnpj_basico: MyString
+  opcao_pelo_simples: MyString
+  data_opcao_simples: 2025-04-08
+  data_exclusao_simples: 2025-04-08
+  opcao_pelo_mei: MyString
+  data_opcao_mei: 2025-04-08
+  data_exclusao_mei: 2025-04-08

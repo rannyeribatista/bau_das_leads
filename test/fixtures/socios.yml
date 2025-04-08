@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cnpj_basico: MyString
+  identificador_socio: 1
+  nome_socio: MyString
+  cpf_cnpj: MyString
+  qualificacao_socio: MyString
+  data_entrada: 2025-04-08
+  pais: MyString
+  faixa_etaria: 1
+
+two:
+  cnpj_basico: MyString
+  identificador_socio: 1
+  nome_socio: MyString
+  cpf_cnpj: MyString
+  qualificacao_socio: MyString
+  data_entrada: 2025-04-08
+  pais: MyString
+  faixa_etaria: 1
